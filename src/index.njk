@@ -1,0 +1,9 @@
+---
+layout: base.njk
+title: 个人手记
+---
+<section class="hero">
+  <div class="hero-copy"><div class="eyebrow">NOTES ON WORK & LIFE <span>／</span> 工程 · 学习 · 生活</div><h1>把思考写下来，<br>让成长<span class="accent">有迹可循。</span></h1><p>{{ site.description }}</p><div class="actions"><a class="button primary" href="#recent">开始阅读 <span>↗</span></a><a class="button" href="/about/">认识一下我 →</a></div><div class="hero-foot"><span class="dot"></span> 保持好奇，持续记录</div></div>
+  <aside class="overview"><div class="eyebrow">THE NOTEBOOK / 手记概览</div><div class="numbers"><div><strong>{{ collections.articles | length }}</strong><span>公开文章</span></div><div><strong>{{ collections.topics | length }}</strong><span>记录主题</span></div></div><div class="overview-line"></div><p>不急着给出答案，<br>先认真记录每一次探索。</p><span class="handwriting">Keep learning. Keep writing.</span></aside>
+</section>
+<section class="journal" id="recent"><div class="section-heading"><div><div class="eyebrow">LATEST ENTRIES / 最近更新</div><h2>一些思考，一些记录<span>（{{ collections.articles | length }}）</span></h2></div><a href="/categories/">按主题浏览 ↗</a></div><div class="filters" aria-label="文章主题筛选"><button class="chip active" data-filter="" aria-pressed="true">全部手记</button>{% for topic in collections.topics %}<button class="chip" data-filter="{{ topic }}" aria-pressed="false">{{ topic }}</button>{% endfor %}</div>{% include "cards.njk" %}</section>

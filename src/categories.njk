@@ -1,0 +1,8 @@
+---
+layout: base.njk
+title: 主题
+permalink: /categories/
+---
+<section class="page-intro"><div class="eyebrow">EXPLORE BY TOPIC</div><h1>沿着兴趣，继续探索。</h1><p>把散落的思考，整理成几条清晰的线索。</p></section>
+<div class="filters" aria-label="文章主题筛选"><button class="chip active" data-filter="" aria-pressed="true">全部主题</button>{% for topic in collections.topics %}<button class="chip" data-filter="{{ topic }}" aria-pressed="false">{{ topic }}</button>{% endfor %}</div>
+{% include "cards.njk" %}
