@@ -28,7 +28,7 @@ npm test
 
 复制任一示例文章，修改文件名和顶部的 title、date、category、description、keywords，再写正文。文件名使用英文和连字符；修改已发布文件名会改变文章 URL。日期使用 YYYY-MM-DD。分类自动从文章汇总，无须另外维护。搜索不包含全文，仅匹配文章元信息。不要把私密文件放进 src/assets，它们会原样发布。
 
-## 首次发布（尚未执行）
+## GitHub Pages 部署配置
 
 1. 在自己的 GitHub 账号下创建 **Public** 仓库 `nice-n.github.io`，不要添加初始化文件。
 2. 在本目录运行以下命令；这些命令会创建提交并向 GitHub 上传代码，应在确认发布内容后执行：
@@ -43,8 +43,23 @@ git push -u origin main
 
 3. 仓库 Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**。
 4. 在 Actions 页面查看部署；如首次运行因 Pages 尚未启用而失败，启用后打开工作流手动 Run workflow 或重新运行。
-5. 成功后访问 https://nice-n.github.io/，再检查文章、搜索、分类和手机页面。
+5. 成功后访问 [博客首页](https://nice-n.github.io/)，再检查文章、搜索、分类和手机页面。
 
-本配置专用于个人主页根路径，不直接用于 `/cBlog/` 等子路径。没有创建远端仓库、提交、推送或实际发布。
+本配置专用于个人主页根路径，不直接用于 `/cBlog/` 等子路径。上方初始化步骤仅适用于尚未关联远端的新目录；已有仓库请使用下方更新流程，不要重复初始化。
+
+## 后续更新
+
+从 [博客仓库](https://github.com/nice-n/nice-n.github.io) 克隆代码后，修改文章或站点配置，先本地构建、检查，再提交推送：
+
+```sh
+npm run build
+npm test
+git add src
+git diff --cached
+git commit -m "docs: update blog content"
+git push origin main
+```
+
+仅暂存本次需要发布的文件。推送 main 后会自动构建部署；Actions 成功后再检查线上页面。
 
 外部资源仅为 Google Fonts，可在无法访问时自动回退系统字体；没有接入访问统计。使用外部字体时浏览器会向 Google 字体服务发出请求，如需完全无外部请求可删除 CSS 第一行。
