@@ -1,0 +1,11 @@
+<div class="cards" id="article-list">
+{% for post in collections.articles %}
+  <article class="card" data-category="{{ post.data.category }}" data-search="{{ post.data.title }} {{ post.data.description }} {{ post.data.category }} {{ post.data.keywords | join(' ') }}">
+    <div class="card-meta"><span>{{ post.data.category }}</span><time datetime="{{ post.date | isoDate }}">{{ post.date | dateLabel }}</time></div>
+    <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+    <p>{{ post.data.description }}</p>
+    <div class="card-bottom"><span>{{ post.templateContent | reading }} 分钟阅读</span><a href="{{ post.url }}" aria-label="阅读全文：{{ post.data.title }}">继续读 <span aria-hidden="true">↗</span></a></div>
+  </article>
+{% endfor %}
+</div>
+<p id="empty-state" class="empty" hidden>暂时没有匹配的文章，试试其他关键词。</p>

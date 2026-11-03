@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>{{ title }} · {{ site.author }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="stylesheet" href="/assets/style.css">
+  <script>try { document.documentElement.dataset.theme = localStorage.getItem('blog-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (_) {}</script>
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳至正文</a>
+  <header class="header wrap">
+    <a class="brand" href="/"><span class="avatar">n.</span><span>{{ site.author }}<small>慢慢写，慢慢读</small></span></a>
+    <nav aria-label="主导航">
+      <a href="/" {% if page.url == '/' %}aria-current="page"{% endif %}>首页</a>
+      <a href="/categories/" {% if page.url == '/categories/' %}aria-current="page"{% endif %}>主题</a>
+      <a href="/search/" {% if page.url == '/search/' %}aria-current="page"{% endif %}>搜索</a>
+      <a href="/about/" {% if page.url == '/about/' %}aria-current="page"{% endif %}>关于</a>
+    </nav>
+    <button class="theme" aria-label="切换明暗主题" type="button">◐</button>
+  </header>
+  <main id="main" class="wrap">{{ content | safe }}</main>
+  <footer class="footer wrap"><div><strong>{{ site.name }}</strong><p>把经历变成文字，把想法慢慢留下。</p></div><div>© {{ site.author }}<br><a href="{{ site.github }}">GitHub ↗</a> · <a href="/feed.xml">RSS ↗</a></div></footer>
+</body>
+</html>
