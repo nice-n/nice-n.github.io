@@ -1,5 +1,6 @@
 module.exports = function (config) {
   config.setNunjucksEnvironmentOptions({ autoescape: true });
+  config.amendLibrary("md", require("./lib/paragraph-indent"));
   config.addPassthroughCopy("src/assets");
   config.addFilter("dateLabel", value => new Date(value).toISOString().slice(0, 10).replaceAll("-", "."));
   config.addFilter("isoDate", value => new Date(value).toISOString());
