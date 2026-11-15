@@ -56,4 +56,8 @@ test('JavaScript 笔记正常显示，缺失图片使用占位说明且未泄露
   assert.match(html, /节流/);
   assert.doesNotMatch(html, /typora-user-images|C:\\Users\\/);
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
+  assert.match(html, /<p class="source-indent" style="--source-indent:4ch">内部<\/p>/);
+  assert.match(html, /<p class="source-indent" style="--source-indent:8ch">外部 js/);
+  assert.match(html, /<p class="source-indent" style="--source-indent:2ch">语法<\/p>/);
+  assert.equal((html.match(/<pre><code/g) || []).length, 132);
 });
